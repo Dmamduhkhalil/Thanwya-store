@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ثانوية بوك .نت - سلة التسوق</title>
+    <link rel="stylesheet" href="css-libraries/new-styles.css">
+</head>
+<body>
+    <h1>سلة التسوق</h1>
+    <div class="invoice-section" id="invoice-section">
+        <table id="invoice-table">
+            <thead>
+                <tr>
+                    <th>اسم الكتاب</th>
+                    <th>الكمية</th>
+                    <th>السعر</th>
+                    <th>الإجمالي</th>
+                    <th>حذف</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- العناصر ستضاف هنا عن طريق JavaScript -->
+            </tbody>
+        </table>
+        <p id="total-price">الإجمالي: 0 جنيه</p>
+        <button onclick="submitOrder()">تأكيد الطلب</button>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        // عرض الفاتورة عند تحميل الصفحة
+        showInvoice();
+    </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+.form-reg__group {
+    position: relative;
+    margin-bottom: 3em;
+    --main-input-color: var(--main-teal-dark-2);
+}
+.form-reg__group input,
+.form-reg__group select,
+.form-reg__group textarea {
+    font-size: 18px;
+    padding: 0.625em 0.625em 0.625em 0.3125em;
+    display: block;
+    background-color: var(--color-primary-container);
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid var(--color-text-secondary);
+    color: var(--color-text-primary);
+}
+
+.form-reg__group input:focus,
+.form-reg__group select:focus,
+.form-reg__group textarea:focus {
+    outline: none;
+}
+
+/* LABEL ======================================= */
+.form-reg__group label {
+    color: var(--color-text-secondary);
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    right: 0.3125em;
+    top: 0.625em;
+    transition: 0.27s ease all;
+    -moz-transition: 0.27s ease all;
+    -webkit-transition: 0.27s ease all;
+}
+
+/* active state */
+.form-reg__group input:focus ~ label,
+.form-reg__group input:valid ~ label,
+.form-reg__group input:read-only ~ label,
+.form-reg__group textarea:focus ~ label,
+.form-reg__group textarea:valid ~ label {
+    top: -10px;
+    left: 0px;
+    font-size: 14px;
+    color: var(--main-input-color);
+}
+.form-reg__group input:read-only ~ label {
+    color: var(--color-text-secondary);
+}
+
+/* BOTTOM BARS ================================= */
+.form-reg__group .bar {
+    position: relative;
+    display: block;
+}
+
+.form-reg__group .bar:before {
+    content: "";
+    right: 0%;
+    height: 2px;
+    width: 0;
+    bottom: 0px;
+    position: absolute;
+    border-radius: 100px;
+    background: var(--main-input-color);
+    transition: 0.3s ease all;
+    -moz-transition: 0.3s ease all;
+    -webkit-transition: 0.3s ease all;
+}
+
+/* active state */
+.form-reg__group input:focus ~ .bar:before,
+.form-reg__group input:focus ~ .bar:after,
+.form-reg__group select:focus ~ .bar::after,
+.form-reg__group select:focus ~ .bar::before,
+.form-reg__group textarea:focus ~ .bar::before,
+.form-reg__group textarea:focus ~ .bar::after {
+    width: 100%;
+}
+
+.form-reg__second {
+    background-color: var(--color-secondary-container);
+    height: 100%;
+    box-shadow: 0px -5px 5px -5px #000 inset;
+}
+.form-reg__group input,
+.form-reg__group select,
+.form-reg__group textarea {
+    background-color: #0000;
+}

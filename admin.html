@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ثانوية بوك .نت - لوحة الإدارة</title>
+    <link rel="stylesheet" href="css-libraries/new-styles.css">
+</head>
+<body>
+    <h1>لوحة الإدارة</h1>
+    <div class="admin-section">
+        <h2>إدارة الكتب</h2>
+        <form id="add-book-form">
+            <input type="text" id="book-name" placeholder="اسم الكتاب" required>
+            <input type="number" id="book-price" placeholder="السعر" required>
+            <input type="text" id="book-image" placeholder="رابط الصورة" required>
+            <button type="submit">إضافة كتاب</button>
+        </form>
+        <div id="admin-books-list">
+            <!-- الكتب ستضاف هنا عن طريق JavaScript -->
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        // عرض الكتب في لوحة الإدارة
+        const adminBooksList = document.getElementById('admin-books-list');
+        books.forEach(book => {
+            const bookItem = `
+                <div class="book-card">
+                    <img src="${book.image}" alt="${book.name}">
+                    <h3>${book.name}</h3>
+                    <p>السعر: ${book.price} جنيه</p>
+                    <button onclick="deleteBook(${book.id})">حذف</button>
+                </div>
+            `;
+            adminBooksList.innerHTML += bookItem;
+        });
+
+        // إضافة كتاب جديد
+        document.getElementById('add-book-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const name = document.getElementById('book-name').value;
+            const price = parseInt(document.getElementById('book-price').value);
+            const image = document.getElementById('book-image').value;
+            const newBook = { id: books.length + 1, name, price, image };
+            books.push(newBook);
+            adminBooksList.innerHTML += `
+                <div class="book-card">
+                    <img src="${newBook.image}" alt="${newBook.name}">
+                    <h3>${newBook.name}</h3>
+                    <p>السعر: ${newBook.price} جنيه</p>
+                    <button onclick="deleteBook(${newBook.id})">حذف</button>
+                </div>
+            `;
+            document.getElementById('add-book-form').reset();
+        });
+
+        // حذف كتاب
+        function deleteBook(bookId) {
+            books = books.filter(book => book.id !== bookId);
+            adminBooksList.innerHTML = '';
+            books.forEach(book => {
+                adminBooksList.innerHTML += `
+                    <div class="book-card">
+                        <img src="${book.image}" alt="${book.name}">
+                        <h3>${book.name}</h3>
+                        <p>السعر: ${book.price} جنيه</p>
+                        <button onclick="deleteBook(${book.id})">حذف</button>
+                    </div>
+                `;
+            });
+        }
+    </script>
+</body>
+</html>
